@@ -11,3 +11,7 @@
 
 Format_QC_Results - Locally developed. So, it has to be added to galaxy manually as of Oct 2022. Soon, it will be added to galaxy toolshed
 
+
+### Galaxy worlflow
+
+![Alt text](relative/path/to/img.jpg?raw=true "Title")
