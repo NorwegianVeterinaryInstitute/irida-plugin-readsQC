@@ -1,0 +1,2 @@
+SpeciesName	ProportionOfMappedReads	ReadLength	Coverage	GC-Content	Mean-PhredScore
+Staphylococcus-aureus	0.95166	301	47x	32.0%	34.4612693028987
