@@ -1,0 +1,299 @@
+{
+  "a_galaxy_workflow" : "true",
+  "annotation" : "",
+  "format-version" : "0.1",
+  "name" : "Reads_QC",
+  "steps" : {
+    "0" : {
+      "workflow_outputs" : [ ],
+      "input_connections" : { },
+      "label" : "sequence_reads_pair",
+      "id" : 0,
+      "tool_state" : "{\"optional\": false, \"collection_type\": \"list:paired\"}",
+      "errors" : null,
+      "position" : {
+        "bottom" : 496.28125,
+        "height" : 82.1953125,
+        "left" : 376,
+        "right" : 576,
+        "top" : 414.0859375,
+        "width" : 200,
+        "x" : 376,
+        "y" : 414.0859375
+      },
+      "name" : "Input dataset collection",
+      "uuid" : "3ebf3865-734b-4ba5-8531-ac24627d0fb3",
+      "outputs" : [ ],
+      "type" : "data_collection_input",
+      "tool_version" : null,
+      "annotation" : "",
+      "inputs" : [ {
+        "description" : "",
+        "name" : "sequence_reads_pair"
+      } ],
+      "content_id" : null,
+      "tool_id" : null
+    },
+    "1" : {
+      "workflow_outputs" : [ {
+        "label" : null,
+        "output_name" : "text_file",
+        "uuid" : "5b41837e-84ea-485f-b6c7-0ed7c31863d2"
+      } ],
+      "input_connections" : {
+        "input_file" : {
+          "id" : 0,
+          "output_name" : "output"
+        }
+      },
+      "label" : null,
+      "id" : 1,
+      "tool_state" : "{\"adapters\": {\"__class__\": \"RuntimeValue\"}, \"contaminants\": {\"__class__\": \"RuntimeValue\"}, \"input_file\": {\"__class__\": \"ConnectedValue\"}, \"kmers\": \"7\", \"limits\": {\"__class__\": \"RuntimeValue\"}, \"min_length\": null, \"nogroup\": \"false\", \"__page__\": null, \"__rerun_remap_job_id__\": null}",
+      "errors" : null,
+      "position" : {
+        "bottom" : 403.28125,
+        "height" : 316.78125,
+        "left" : 650.734375,
+        "right" : 850.734375,
+        "top" : 86.5,
+        "width" : 200,
+        "x" : 650.734375,
+        "y" : 86.5
+      },
+      "name" : "FastQC",
+      "uuid" : "6de8884d-86b4-4d18-bd42-18f97cfc2a30",
+      "outputs" : [ {
+        "name" : "html_file",
+        "type" : "html"
+      }, {
+        "name" : "text_file",
+        "type" : "txt"
+      } ],
+      "tool_shed_repository" : {
+        "changeset_revision" : "3d0c7bdf12f5",
+        "name" : "fastqc",
+        "owner" : "devteam",
+        "tool_shed" : "toolshed.g2.bx.psu.edu"
+      },
+      "type" : "tool",
+      "tool_version" : "0.73+galaxy0",
+      "annotation" : "",
+      "inputs" : [ {
+        "description" : "runtime parameter for tool FastQC",
+        "name" : "adapters"
+      }, {
+        "description" : "runtime parameter for tool FastQC",
+        "name" : "contaminants"
+      }, {
+        "description" : "runtime parameter for tool FastQC",
+        "name" : "limits"
+      } ],
+      "post_job_actions" : {
+        "ChangeDatatypeActiontext_file" : {
+          "action_arguments" : {
+            "newtype" : "tabular"
+          },
+          "action_type" : "ChangeDatatypeAction",
+          "output_name" : "text_file"
+        },
+        "HideDatasetActionhtml_file" : {
+          "action_arguments" : { },
+          "action_type" : "HideDatasetAction",
+          "output_name" : "html_file"
+        }
+      },
+      "content_id" : "toolshed.g2.bx.psu.edu/repos/devteam/fastqc/fastqc/0.73+galaxy0",
+      "tool_id" : "toolshed.g2.bx.psu.edu/repos/devteam/fastqc/fastqc/0.73+galaxy0"
+    },
+    "2" : {
+      "workflow_outputs" : [ {
+        "label" : null,
+        "output_name" : "report_output",
+        "uuid" : "f1f3718d-8fa1-43fb-a30e-bfa2a3191942"
+      } ],
+      "input_connections" : {
+        "single_paired|input_pair" : {
+          "id" : 0,
+          "output_name" : "output"
+        }
+      },
+      "label" : null,
+      "id" : 2,
+      "tool_state" : "{\"confidence\": \"0.0\", \"kraken2_database\": \"2022-03-14T135049Z_standard_prebuilt_8\", \"min_base_quality\": \"0\", \"minimum_hit_groups\": \"2\", \"quick\": \"false\", \"report\": {\"create_report\": \"true\", \"use_mpa_style\": \"false\", \"report_zero_counts\": \"false\", \"report_minimizer_data\": \"false\"}, \"single_paired\": {\"single_paired_selector\": \"collection\", \"__current_case__\": 0, \"input_pair\": {\"__class__\": \"RuntimeValue\"}}, \"split_reads\": \"false\", \"use_names\": \"false\", \"__page__\": null, \"__rerun_remap_job_id__\": null}",
+      "errors" : null,
+      "position" : {
+        "bottom" : 730.59375,
+        "height" : 184.7890625,
+        "left" : 649.28125,
+        "right" : 849.28125,
+        "top" : 545.8046875,
+        "width" : 200,
+        "x" : 649.28125,
+        "y" : 545.8046875
+      },
+      "name" : "Kraken2",
+      "uuid" : "85aad306-c80c-4d82-8b6b-6788089fc7c4",
+      "outputs" : [ {
+        "name" : "report_output",
+        "type" : "tabular"
+      }, {
+        "name" : "output",
+        "type" : "tabular"
+      } ],
+      "tool_shed_repository" : {
+        "changeset_revision" : "e674066930b2",
+        "name" : "kraken2",
+        "owner" : "iuc",
+        "tool_shed" : "toolshed.g2.bx.psu.edu"
+      },
+      "type" : "tool",
+      "tool_version" : "2.1.1+galaxy1",
+      "annotation" : "",
+      "inputs" : [ {
+        "description" : "runtime parameter for tool Kraken2",
+        "name" : "single_paired"
+      } ],
+      "post_job_actions" : {
+        "HideDatasetActionoutput" : {
+          "action_arguments" : { },
+          "action_type" : "HideDatasetAction",
+          "output_name" : "output"
+        }
+      },
+      "content_id" : "toolshed.g2.bx.psu.edu/repos/iuc/kraken2/kraken2/2.1.1+galaxy1",
+      "tool_id" : "toolshed.g2.bx.psu.edu/repos/iuc/kraken2/kraken2/2.1.1+galaxy1"
+    },
+    "3" : {
+      "workflow_outputs" : [ {
+        "label" : null,
+        "output_name" : "report",
+        "uuid" : "52d86729-f5a1-42c0-81e9-985c27a19501"
+      } ],
+      "input_connections" : {
+        "input" : {
+          "id" : 2,
+          "output_name" : "report_output"
+        }
+      },
+      "label" : null,
+      "id" : 3,
+      "tool_state" : "{\"input\": {\"__class__\": \"RuntimeValue\"}, \"kmer_distr\": \"07dcec8e-3f0f-42a2-bed2-e745942c6870\", \"level\": \"S\", \"threshold\": \"10\", \"__page__\": null, \"__rerun_remap_job_id__\": null}",
+      "errors" : null,
+      "position" : {
+        "bottom" : 687.265625,
+        "height" : 195.1875,
+        "left" : 910.0078125,
+        "right" : 1110.0078125,
+        "top" : 492.078125,
+        "width" : 200,
+        "x" : 910.0078125,
+        "y" : 492.078125
+      },
+      "name" : "Estimate Abundance at Taxonomic Level",
+      "uuid" : "aae9fc6b-d425-4f98-87da-526baf34aaca",
+      "outputs" : [ {
+        "name" : "report",
+        "type" : "tabular"
+      } ],
+      "tool_shed_repository" : {
+        "changeset_revision" : "b08ac10aed96",
+        "name" : "bracken",
+        "owner" : "iuc",
+        "tool_shed" : "toolshed.g2.bx.psu.edu"
+      },
+      "type" : "tool",
+      "tool_version" : "2.6.1+galaxy0",
+      "annotation" : "",
+      "inputs" : [ {
+        "description" : "runtime parameter for tool Estimate Abundance at Taxonomic Level",
+        "name" : "input"
+      } ],
+      "post_job_actions" : {
+        "ChangeDatatypeActionreport" : {
+          "action_arguments" : {
+            "newtype" : "tabular"
+          },
+          "action_type" : "ChangeDatatypeAction",
+          "output_name" : "report"
+        },
+        "RenameDatasetActionreport" : {
+          "action_arguments" : {
+            "newname" : "bracken_report_file.tsv"
+          },
+          "action_type" : "RenameDatasetAction",
+          "output_name" : "report"
+        }
+      },
+      "content_id" : "toolshed.g2.bx.psu.edu/repos/iuc/bracken/est_abundance/2.6.1+galaxy0",
+      "tool_id" : "toolshed.g2.bx.psu.edu/repos/iuc/bracken/est_abundance/2.6.1+galaxy0"
+    },
+    "4" : {
+      "workflow_outputs" : [ {
+        "label" : null,
+        "output_name" : "output",
+        "uuid" : "535d79c5-1e2a-40b3-8b67-11faf50efb2f"
+      } ],
+      "input_connections" : {
+        "input1" : {
+          "id" : 3,
+          "output_name" : "report"
+        },
+        "input4" : {
+          "id" : 1,
+          "output_name" : "text_file"
+        }
+      },
+      "label" : null,
+      "id" : 4,
+      "tool_state" : "{\"bp_num\": \"5100000\", \"input1\": {\"__class__\": \"RuntimeValue\"}, \"input4\": {\"__class__\": \"RuntimeValue\"}, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
+      "errors" : null,
+      "position" : {
+        "bottom" : 304.6875,
+        "height" : 164.390625,
+        "left" : 1154.9609375,
+        "right" : 1354.9609375,
+        "top" : 140.296875,
+        "width" : 200,
+        "x" : 1154.9609375,
+        "y" : 140.296875
+      },
+      "name" : "Format_Read_QC",
+      "uuid" : "d1e61d1b-1b97-4e18-abd5-0daacf6e8629",
+      "outputs" : [ {
+        "name" : "output",
+        "type" : "txt"
+      } ],
+      "type" : "tool",
+      "tool_version" : "@TOOL_VERSION@+galaxy1",
+      "annotation" : "",
+      "inputs" : [ {
+        "description" : "runtime parameter for tool Format_Read_QC",
+        "name" : "input1"
+      }, {
+        "description" : "runtime parameter for tool Format_Read_QC",
+        "name" : "input4"
+      } ],
+      "post_job_actions" : {
+        "ChangeDatatypeActionoutput" : {
+          "action_arguments" : {
+            "newtype" : "tabular"
+          },
+          "action_type" : "ChangeDatatypeAction",
+          "output_name" : "output"
+        },
+        "RenameDatasetActionoutput" : {
+          "action_arguments" : {
+            "newname" : "formatted_read_qc_output.tsv"
+          },
+          "action_type" : "RenameDatasetAction",
+          "output_name" : "output"
+        }
+      },
+      "content_id" : "format_read_qc",
+      "tool_id" : "format_read_qc"
+    }
+  },
+  "tags" : [ ],
+  "uuid" : "471e3f7d-bcfc-453b-b272-6b4b6aa3e077",
+  "version" : 7
+}
