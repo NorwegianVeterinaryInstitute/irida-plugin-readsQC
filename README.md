@@ -14,4 +14,4 @@ Format_QC_Results - Locally developed. So, it has to be added to galaxy manually
 
 ### Galaxy worlflow
 
-![Alt text](relative/path/to/img.jpg?raw=true "Title")
+![Alt text](https://github.com/NorwegianVeterinaryInstitute/irida-plugin-readsQC/blob/main/images/Reads_QC.png?raw=true "Title")
