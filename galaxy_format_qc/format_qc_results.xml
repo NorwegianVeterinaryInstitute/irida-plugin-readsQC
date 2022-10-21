@@ -1,0 +1,38 @@
+<tool id="format_read_qc" name="Format_Read_QC" version="@TOOL_VERSION@+galaxy1">
+    <description>
+    Formats the output from bracken and fastqc outputs.
+    </description>
+
+    <command>
+        <![CDATA[
+        mkdir output_dir &&
+        python3 /Users/jeevka/galaxy/tools/read_qc/format_qc_results.py $input1 $input2 $input4.forward $input4.reverse $bp_num
+        ]]>
+    </command>
+
+    <inputs>
+            <param format="tabular" name="input1" type="data" label="Bracken output file"/>
+            <param format="txt" name="input2" type="data" label="FastQC Summary" />
+            <param format="txt" name="input4" type="data_collection" collection_type="paired" label="Summary PhredScore" />
+            <!--param format="txt" name="input3" type="data" label="Sum FastQC" /-->
+            <param name="bp_num" type="integer" value="" label="Number of base pairs"/>
+    </inputs>
+
+
+    <outputs>
+        <data format="txt" name="output" from_work_dir="formatted_read_qc_output.txt" label="Formatted read QC results" />
+    </outputs>
+    <help>
+        <![CDATA[
+        **What it does**
+        Formats the output from bracken and fastqc outputs.
+
+        **License**
+        To be added
+
+        ** Acknowledgments **
+        To be added
+
+        ]]>
+    </help>
+</tool>
