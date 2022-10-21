@@ -6,7 +6,7 @@
     <command>
         <![CDATA[
         mkdir output_dir &&
-        python3 /Users/jeevka/galaxy/tools/read_qc/format_qc_results.py $input1 $input2 $input4.forward $input4.reverse $bp_num
+        python3 tools/read_qc/format_qc_results.py $input1 $input2 $input4.forward $input4.reverse $bp_num
         ]]>
     </command>
 
